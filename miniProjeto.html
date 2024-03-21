@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catálogo de produtos</title>
+  </head>
+  <body>
+    <script>
+
+        const produtos = [];
+        var resp;
+
+        //Funções
+
+        function CadastrarProduto(nome, cod, preco, desc){   
+            produtos.push({ nomeProduto:nome, codigoProduto:cod, precoProduto:preco, descricao:desc  });
+        }
+
+        function BuscarProduto(busca){
+
+            confirm = false;
+
+            for(let i = 0; i < produtos.length; i ++){
+
+                if(produtos[i].codigoProduto == busca){
+                    
+                    alert(`Nome: ${produtos[i].nomeProduto}\n Código: ${produtos[i].codigoProduto}\n Preço: ${produtos[i].precoProduto}\n Descrição: ${produtos[i].descricao}`)
+                    
+                    confirm = true;  
+                }
+            }
+            return confirm;
+
+        }
+
+        function VisualizarProdutos(){
+
+            for(let i=0; i < produtos.length; i++){
+                alert(`Nome: ${produtos[i].nomeProduto}\n Código: ${produtos[i].codigoProduto}\n Preço: ${produtos[i].precoProduto}\n Descrição: ${produtos[i].descricao}`)
+            }
+
+        }
+
+        function AtualizarProduto(codigo, novoNome, novoCodigo, novoPreco, novaDesc){
+
+            confirm = false;
+
+            for(let i = 0; i < produtos.length; i ++){
+
+                if(produtos[i].codigoProduto == codigo){
+                    const novoNome = prompt("Nome: ");
+                    const novoCodigo = prompt("Código: ");
+                    const novoPreco = prompt("Preço: ");
+                    const novaDesc = prompt("Descrição: ");
+
+                    produtos[i].nomeProduto = novoNome;
+                    produtos[i].codigoProduto = novoCodigo;
+                    produtos[i].precoProduto = novoPreco;
+                    produtos[i].descricao = novaDesc;
+                    
+                    confirm = true;  
+                }
+            }
+            return confirm;
+        }
+        
+
+        function RemoverProduto(codigo){
+
+            confirm = false;
+
+            for(let i = 0; i < produtos.length; i ++){
+
+                if(produtos[i].codigoProduto == codigo){
+
+                    produtos.splice([i], 1)
+                    
+                    confirm = true;  
+                }
+            }
+            return confirm;
+        } 
+
+        //Loop principal
+
+        do{
+
+            resp = prompt("CATÁLOGO DE PRODUTOS\n\n 1 - Cadastrar\n 2 - Buscar\n 3 - Visualizar todos\n 4 - Atualizar\n 5 - Remover\n 6 - Sair");
+
+            if (resp == 1) {
+                const nome = prompt("Nome do produto: ");
+                const cod = prompt("Código: ");
+                const preco = prompt("Preço: ");
+                const desc = prompt("Descrição: "); 
+
+                CadastrarProduto(nome, cod, preco, desc);
+
+                alert("O produto foi cadastrado!")
+            }
+        
+            else if (resp == 2) {
+                const busca = prompt("Código do produto: ");
+                var confBuscar = BuscarProduto(busca);
+
+                if(confBuscar == false){
+                    alert("Produto não encontrado")
+                }
+            }
+
+            else if(resp == 3){
+                VisualizarProdutos();
+            }
+
+            else if(resp == 4){
+                const codAtualizar = prompt("Código do produto: ");
+                var confAtualizar = AtualizarProduto(codAtualizar);
+
+                if(confAtualizar == true){
+                    alert("O produto foi atualizado!")
+                }
+
+                else{
+                    alert("O produto não consta no sistema")
+                }
+            }
+
+            else if(resp == 5){
+                const codRemover = prompt("Código do produto: ");
+                var confRemover = RemoverProduto(codRemover);
+
+                if(confRemover == true){
+                    alert("O produto foi removido!")
+                }
+
+                else{
+                    alert("O produto não consta no sistema")
+                }
+            }
+
+        }while(resp != 6)
+        
+    </script>
+  </body>
+</html>
+
+
+
+
