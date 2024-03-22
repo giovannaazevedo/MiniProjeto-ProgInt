@@ -22,7 +22,7 @@
 
             confirm = false;
 
-            for(let i = 0; i < produtos.length; i ++){
+            for(var i = 0; i < produtos.length; i ++){
 
                 if(produtos[i].codigoProduto == busca){
                     
@@ -37,7 +37,7 @@
 
         function VisualizarProdutos(){
 
-            for(let i=0; i < produtos.length; i++){
+            for(var i=0; i < produtos.length; i++){
                 alert(`Nome: ${produtos[i].nomeProduto}\n Código: ${produtos[i].codigoProduto}\n Preço: ${produtos[i].precoProduto}\n Descrição: ${produtos[i].descricao}`)
             }
 
@@ -47,7 +47,7 @@
 
             confirm = false;
 
-            for(let i = 0; i < produtos.length; i ++){
+            for(var i = 0; i < produtos.length; i ++){
 
                 if(produtos[i].codigoProduto == codigo){
                     const novoNome = prompt("Nome: ");
@@ -71,7 +71,7 @@
 
             confirm = false;
 
-            for(let i = 0; i < produtos.length; i ++){
+            for(var i = 0; i < produtos.length; i ++){
 
                 if(produtos[i].codigoProduto == codigo){
 
